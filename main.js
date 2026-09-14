@@ -47,7 +47,7 @@ class InfoPanel {
               <input type="text" class="pwd-input" placeholder="${this.placeholder}" required autocomplete="off">
               <button type="submit" class="submit-btn">確認</button>
             </div>
-            <div class="state-error">⚠️ パスワードが違います</div>
+            <div class="state-error">パスワードが違います！</div>
           </div>
         </form>
       </div>
@@ -150,7 +150,7 @@ class App {
 // ==========================================
 const data = [
   { id: 1, title: '1つ目の情報', password: 'circle', placeholder: 'パスワードを入力...', text: 'ある方向から見ると円形をしている。' },
-  { id: 2, title: '2つ目の情報', password: 'park', placeholder: 'アルファベット4文字', text: 'ある方向から見ると四角形に見える。' },
+  { id: 2, title: '2つ目の情報', password: 'park', placeholder: '4文字の英単語を入力', text: 'ある方向から見ると四角形に見える。' },
   { id: 3, title: '3つ目の情報', password: 'cylinder', placeholder: 'パスワードを入力...', text: '棒状の細長い形をしている。' }
 ];
 
