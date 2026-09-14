@@ -1,0 +1,240 @@
+:root {
+  --primary-green: #0fa35b;
+  --text-color: #111111;
+  --border-width: 2.5px;
+  --radius-sm: 8px;
+  --radius-lg: 12px;
+  --bg-color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", Meiryo, sans-serif;
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ====================
+   上部ボタングループ
+==================== */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border: var(--border-width) solid var(--primary-green);
+  border-radius: var(--radius-sm);
+  background-color: #ffffff;
+  color: var(--text-color);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background-color: #f2faf5;
+}
+
+/* 選択中のタブボタン */
+.nav-btn.active {
+  background-color: var(--primary-green);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* ====================
+   各コンテンツセクション
+==================== */
+.info-section {
+  display: none; /* デフォルト非表示 */
+  width: 100%;
+}
+
+.info-section.active {
+  display: block; /* 選択中タブを表示 */
+}
+
+/* ====================
+   認証フォームエリア
+==================== */
+.auth-box {
+  border: 1.5px dashed var(--primary-green);
+  background-color: #fafffc;
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+/* ロック解除されたら入力欄は消す */
+.info-section.unlocked .auth-box {
+  display: none;
+}
+
+.guide-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #276749;
+  margin-bottom: 12px;
+}
+
+.pwd-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.input-row {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+}
+
+.pwd-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.pwd-input:focus {
+  border-color: var(--primary-green);
+}
+
+.submit-btn {
+  padding: 0 16px;
+  background-color: var(--primary-green);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.submit-btn:hover {
+  opacity: 0.8;
+}
+
+.state-error {
+  display: none;
+  color: #e53e3e;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.state-error.show {
+  display: block;
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* ====================
+   解除後の情報カード
+==================== */
+.content-display {
+  display: none;
+  width: 100%;
+  position: relative;
+  margin-top: 35px;
+}
+
+/* ロック解除されたらカードを表示 */
+.info-section.unlocked .content-display {
+  display: block;
+  animation: fadeIn 0.35s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-frame {
+  border: var(--border-width) solid var(--primary-green);
+  border-radius: var(--radius-lg);
+  background-color: #ffffff;
+  padding: 70px 30px 60px;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.card-header-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: var(--border-width) solid var(--primary-green);
+  background-color: #ffffff;
+  border-radius: var(--radius-sm);
+  padding: 6px 36px;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  box-shadow: 0 0 0 4px #ffffff;
+}
+
+.card-body-text {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-align: center;
+  line-height: 1.7;
+}
+
+@media (max-width: 580px) {
+  .button-group { gap: 8px; margin-bottom: 30px; }
+  .nav-btn { font-size: 16px; padding: 8px 14px; }
+  .card-header-badge { font-size: 22px; padding: 4px 20px; }
+  .card-body-text { font-size: 18px; }
+  .card-frame { padding: 55px 16px 45px; min-height: 200px; }
+}
