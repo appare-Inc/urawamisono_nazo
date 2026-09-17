@@ -280,6 +280,9 @@ body {
 
 .modal-content {
   background-color: #ffffff;
+  padding: 40px 20px;
+  width:90%;
+  max-width: 400px;
   padding: 40px 60px;
   border-radius: var(--radius-lg);
   border: var(--border-width) solid var(--primary-green);
@@ -297,7 +300,9 @@ body {
   font-size: 28px;
   font-weight: bold;
   color: var(--primary-green);
-  margin-bottom: 24px;
+  width: 90%;
+  margin: 0 auto 24px;
+  line-height: 1.5;
 }
 
 .modal-close-btn {
