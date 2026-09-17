@@ -281,9 +281,8 @@ body {
 .modal-content {
   background-color: #ffffff;
   padding: 40px 20px;
-  width:90%;
-  max-width: 400px;
-  padding: 40px 60px;
+  width: 90vw;
+  max-width: 500px;
   border-radius: var(--radius-lg);
   border: var(--border-width) solid var(--primary-green);
   text-align: center;
@@ -297,12 +296,16 @@ body {
 }
 
 .modal-content p {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: bold;
   color: var(--primary-green);
-  width: 90%;
+  width: 100%;
   margin: 0 auto 24px;
   line-height: 1.5;
+  /* 日本語の単語の途中で不自然に改行されないようにする設定 */
+  /* word-break: keep-all;  */
+  word-break: auto-phrase;
+  overflow-wrap: break-word;
 }
 
 .modal-close-btn {
