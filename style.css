@@ -127,6 +127,7 @@ body {
 
 .pwd-input {
   flex: 1;
+  min-width: 0;
   padding: 10px 14px;
   border: 1.5px solid #ccc;
   border-radius: 6px;
@@ -237,6 +238,17 @@ body {
   .card-header-badge { font-size: 22px; padding: 4px 20px; }
   .card-body-text { font-size: 18px; }
   .card-frame { padding: 55px 16px 45px; min-height: 200px; }
+  .input-row {
+    flex-direction: column; /* スマホでは入力欄とボタンを縦並びにする */
+    gap: 12px;
+  }
+  .submit-btn {
+    width: 100%; /* ボタンを横幅いっぱいに広げる */
+    padding: 12px 16px; /* スマホでタップしやすいように高さを出す */
+  }
+  .auth-box {
+    padding: 20px 16px; /* 左右の余白を少し狭めて窮屈さをなくす */
+  }
 }
 
 /* ====================
