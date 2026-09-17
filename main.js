@@ -2,7 +2,7 @@
  * 1つの情報パネル（タブ＋コンテンツ＋認証）を管理するクラス
  */
 class InfoPanel {
-  constructor(data, switchCallback) {
+  constructor(data, switchCallback, onUnlockCallback) {
     this.id = data.id;
     this.title = data.title;
     this.expectedPassword = data.password;
@@ -11,6 +11,7 @@ class InfoPanel {
     
     this.isUnlocked = false; // ロック解除状態
     this.switchCallback = switchCallback; // タブ切り替え時の処理
+    this.onUnlockCallback = onUnlockCallback
 
     // DOM要素の参照を保持
     this.navBtnElement = null;
@@ -90,6 +91,10 @@ class InfoPanel {
   unlock() {
     this.isUnlocked = true;
     this.sectionElement.classList.add('unlocked');
+
+    if (this.onUnlockCallback) {
+      this.onUnlockCallback();
+    }
   }
 
   // このタブをアクティブ(表示)または非アクティブにするメソッド
@@ -122,9 +127,19 @@ class App {
 
     // データの配列から InfoPanel オブジェクトを量産
     this.panelsData.forEach((data, index) => {
-      // インスタンス化 (タブ切り替えメソッドをコールバックとして渡す)
-      const panel = new InfoPanel(data, (id) => this.switchTab(id));
+      // 変更: idが3のときだけモーダルを表示する関数を定義
+      let onUnlock = null;
+      if (data.id === 3) {
+        onUnlock = () => this.showModal();
+      }
+
+      // 変更: 第3引数に onUnlock を渡す
+      const panel = new InfoPanel(data, (id) => this.switchTab(id), onUnlock);
       this.panels.push(panel);
+
+      // // インスタンス化 (タブ切り替えメソッドをコールバックとして渡す)
+      // const panel = new InfoPanel(data, (id) => this.switchTab(id));
+      // this.panels.push(panel);
       
       // ボタンとセクションをDOMに追加
       btnGroup.appendChild(panel.renderNavButton());
@@ -135,6 +150,8 @@ class App {
         panel.setActive(true);
       }
     });
+
+    this.setupModal();
   }
 
   // 選択されたIDのタブだけをActiveにする
@@ -142,6 +159,20 @@ class App {
     this.panels.forEach(panel => {
       panel.setActive(panel.id === id);
     });
+  }
+
+  setupModal() {
+    this.modal = document.getElementById('congrats-modal');
+    this.closeBtn = document.getElementById('modal-close-btn');
+    
+    // 閉じるボタンが押されたら .show を外して非表示にする
+    this.closeBtn.addEventListener('click', () => {
+      this.modal.classList.remove('show');
+    });
+  }
+
+  showModal() {
+    this.modal.classList.add('show');
   }
 }
 
@@ -151,7 +182,7 @@ class App {
 const data = [
   { id: 1, title: '1つ目の情報', password: 'circle', placeholder: 'パスワードを入力...', text: 'ある方向から見ると円形をしている。' },
   { id: 2, title: '2つ目の情報', password: 'park', placeholder: '4文字の英単語を入力', text: 'ある方向から見ると四角形に見える。' },
-  { id: 3, title: '3つ目の情報', password: 'cylinder', placeholder: 'パスワードを入力...', text: '棒状の細長い形をしている。' }
+  { id: 3, title: '3つ目の情報', password: 'star', placeholder: '4文字の英単語を入力', text: '棒状の細長い形をしている。' }
 ];
 
 // 初期化実行

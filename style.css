@@ -238,3 +238,68 @@ body {
   .card-body-text { font-size: 18px; }
   .card-frame { padding: 55px 16px 45px; min-height: 200px; }
 }
+
+/* ====================
+   モーダルウィンドウ (ここから追加)
+==================== */
+.modal-overlay {
+  display: none; /* デフォルト非表示 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+/* JavaScriptで .show が付与されたら表示 */
+.modal-overlay.show {
+  display: flex;
+  animation: fadeInModal 0.2s ease-out;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 40px 60px;
+  border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--primary-green);
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transform: scale(0.9);
+  animation: scaleUp 0.2s ease-out forwards;
+}
+
+@keyframes scaleUp {
+  to { transform: scale(1); }
+}
+
+.modal-content p {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--primary-green);
+  margin-bottom: 24px;
+}
+
+.modal-close-btn {
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: var(--primary-green);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.modal-close-btn:hover {
+  opacity: 0.8;
+}
