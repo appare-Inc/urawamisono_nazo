@@ -89,8 +89,8 @@ body {
    認証フォームエリア
 ==================== */
 .auth-box {
-  border: 1.5px dashed var(--primary-green);
-  background-color: #fafffc;
+  border: 1.5px solid var(--primary-green);
+  background-color: #ffffff;
   border-radius: var(--radius-sm);
   padding: 20px 24px;
   margin-bottom: 28px;
@@ -188,13 +188,13 @@ body {
 /* ロック解除されたらカードを表示 */
 .info-section.unlocked .content-display {
   display: block;
-  animation: fadeIn 0.35s ease-out;
+  /* animation: fadeIn 0.35s ease-out; */
 }
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
-}
+} */
 
 .card-frame {
   border: var(--border-width) solid var(--primary-green);
