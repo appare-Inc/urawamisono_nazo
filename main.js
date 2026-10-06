@@ -182,7 +182,7 @@ class App {
 const data = [
   { id: 1, title: '1つ目の情報', password: 'しゅっぱつ', placeholder: 'ひらがな5文字で入力', text: 'ある方向から見ると長方形に見える。' },
   { id: 2, title: '2つ目の情報', password: 'park', placeholder: '4文字の英単語を入力', text: 'ある方向から見ると円に見える。' },
-  { id: 3, title: '3つ目の情報', password: 'かき', placeholder: 'ひらがな2文字の答えを入力', text: '棒状の細長い形をしている。' }
+  { id: 3, title: '3つ目の情報', password: 'かき', placeholder: 'ひらがな2文字の答えを入力', text: '棒状の細長い形をしている。長さは30 cmほど。' }
 ];
 
 // 初期化実行
